@@ -1,4 +1,10 @@
 # Open CL Enhanced Physics Engine
+The idea is to make a physics engine for n spheres that undergo forces. The rendering will be done with Matplotlib for now while the simulation is done with OpenCL (hopefully). If I learn OpenGL or DirectX in future, I would love to render the particles live.
+
+## Why Open CL
+* I want to learn OpenCL
+* I dont own a CUDA capable GPU
+* I think the Verlet integration steps could be spead up with a GPU!
 
 ## Verlet Integrator
 A damped harmonic system has an equation of motion as such
@@ -32,3 +38,4 @@ $$ v_{i+1} = v_i - \frac{hk}{m} x_i. $$
 However, we should add in a damping term and an external Force term, so correct $v_{i+1}$ to
 
 $$ v_{i+1} = v_i - \frac{hk}{m} x_i - \frac{hb}{m}v_i + \frac{hF_i}{m}. $$
+
