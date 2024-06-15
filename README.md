@@ -1,19 +1,22 @@
 # Open CL Enhanced Physics Engine
 
 ## Verlet Integrator
-A damped harmonic system has an equation of motion as such 
-$$ m \frac{d^2x(t)}{dt^2} + b \frac{dx(t)}{dt} + kx(t) = F(t). \tag{1} \\ $$
+A damped harmonic system has an equation of motion as such
+
+$ m \frac{d^2x(t)}{dt^2} + b \frac{dx(t)}{dt} + kx(t) = F(t). \tag{1} $
 
 
 I did a project once that showed that a Velet integrator beats the Euler and Euler Cromer integrators as it has both $\mathcal{O}(x^4)$ error and is symplectic.
 
-To derive the Verlet method, we begin with the centred derivative (10).
-$$ \frac{dx}{dt} = \lim_{h \to 0} \frac{x(t+h)-x(t-h)}{2h} \tag{2} \\ $$
+To derive the Verlet method, we begin with the centred derivative (2).
+
+$ \frac{dx}{dt} = \lim_{h \to 0} \frac{x(t+h)-x(t-h)}{2h} \tag{2} \\ $
+
 If you taylor expand this about $x(t+h)$ and $x(t-h)$, and add an external force, we get:
 
-$$ x_{i+1} = Ax_i + Bx_{i-1}  +  CF_i \tag{3} \\ $$
-$$ v_i = \frac{x_{i+1}-x_{i-1}}{2h} \tag{4} \\ $$
-$$ A = 2\frac{(2m-kh^2)}{D}, \quad B = \frac{bh-2m}{D}, \quad C=\frac{2h^2}{D}, \quad D=2m+bh. \tag{5} \\ $$
+$ x_{i+1} = Ax_i + Bx_{i-1}  +  CF_i \tag{3} \\ $
+$ v_i = \frac{x_{i+1}-x_{i-1}}{2h} \tag{4} \\ $
+$ A = 2\frac{(2m-kh^2)}{D}, \quad B = \frac{bh-2m}{D}, \quad C=\frac{2h^2}{D}, \quad D=2m+bh. \tag{5} \\ $
 Verlets method is not self starting, we need more than just $x_0$, $v_0$. To get $x_1$ and $v_1$, we use the Euler-Cromer method as it also has quartic error.
 
 ## Euler Cromer
